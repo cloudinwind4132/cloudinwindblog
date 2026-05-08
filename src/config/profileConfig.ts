@@ -7,10 +7,10 @@ export const profileConfig: ProfileConfig = {
 	// 2. src 目录（不以 "/" 开头，自动优化但会增加构建时间，推荐）："assets/images/avatar.webp"
 	// 3. 远程 URL："https://example.com/avatar.jpg"
 	// avatar: "assets/images/avatar.avif",
-	avatar: "https://cloudinwind.github.io/cloudinwindblog/images/cloudinwind_ava.jpg",
+	avatar: "assets/images/cloudinwind_avatar.png",
 
 	// 名字
-	name: "日月同辉",
+	name: "cloudinwind",
 
 	// 个人签名
 	bio: "世间的一个默默争渡者",
