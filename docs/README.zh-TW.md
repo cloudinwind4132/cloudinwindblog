@@ -81,7 +81,7 @@
 - [x] **頁尾配置** - HTML 內容注入，完全自訂
 - [x] **亮暗色模式** - 支援亮色/暗色/跟隨系統三種模式
 - [x] **導覽列自訂** - Logo、標題、連結全面自訂
-- [x] **桌布模式切換** - 橫幅桌布、全螢幕桌布、純色背景
+- [x] **桌布模式切換** - 橫幅桌布、全螢幕桌布、全螢幕透明桌布、純色背景
 - [x] **主題色自訂** - 360° 色相調節
 
 
@@ -178,7 +178,7 @@ src/
 │   ├── footerConfig.ts       # 頁尾配置
 │   ├── FooterConfig.html     # 頁尾HTML內容
 │   ├── expressiveCodeConfig.ts # 程式碼高亮配置
-│   ├── sakuraConfig.ts       # 櫻花特效配置
+│   ├── effectsConfig.ts      # 動畫特效配置（櫻花等）
 │   ├── fontConfig.ts         # 字型配置
 │   ├── sidebarConfig.ts      # 側邊欄版面配置配置
 │   ├── navBarConfig.ts       # 導覽列配置

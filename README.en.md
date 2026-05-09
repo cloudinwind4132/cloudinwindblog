@@ -80,7 +80,7 @@
 - [x] **Footer Configuration** - HTML content injection, fully customizable
 - [x] **Light/Dark Mode** - Supports light/dark/system three modes
 - [x] **Navbar Customization** - Logo, title, links fully customizable
-- [x] **Wallpaper Mode Switching** - Banner wallpaper, fullscreen wallpaper, solid background
+- [x] **Wallpaper Mode Switching** - Banner wallpaper, fullscreen wallpaper, fullscreen transparent wallpaper, solid background
 - [x] **Theme Color Customization** - 360° hue adjustment
 
 
@@ -177,7 +177,7 @@ src/
 │   ├── footerConfig.ts       # Footer configuration
 │   ├── FooterConfig.html     # Footer HTML content
 │   ├── expressiveCodeConfig.ts # Code highlighting configuration
-│   ├── sakuraConfig.ts       # Sakura effect configuration
+│   ├── effectsConfig.ts      # Animation effects config (sakura, etc.)
 │   ├── fontConfig.ts         # Font configuration
 │   ├── sidebarConfig.ts      # Sidebar layout configuration
 │   ├── navBarConfig.ts       # Navbar configuration
