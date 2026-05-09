@@ -3,9 +3,9 @@ title: "2026-04-06"
 published: 2026-04-06
 description: "0330-0405 这一周的总结"
 image: ../images/week-note-1.webp
-category: 'Week-Journal'
-password: '123456'
-tags: '碎碎念'
+category: "Week-Journal"
+password: "123456"
+tags: [碎碎念]
 ---
 
 
