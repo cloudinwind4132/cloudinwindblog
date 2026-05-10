@@ -2,7 +2,6 @@
 title: 计算机相关专业学习资料
 description: 包括自学资料、大学生活、保研资料
 published: 2025-03-01
-slug: xue-xi-zi-liao-shou-ji
 image: ./images/learn_resource_1.jpg
 category: 学习
 tags: [自学, 大学生活, 保研, 资料]
