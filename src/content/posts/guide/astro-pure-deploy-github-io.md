@@ -1,10 +1,10 @@
 ---
-title: "Astro-Pure Blog 部署到 github-io"
+title: "Astro-Pure Blog 多部署- github-io（不适用于 Firefly）"
 published: 2025-12-10
 description: "如何将 astro-pure 主题部署到 github.io?"
-image: https://i.pximg.net/img-original/img/2025/07/12/22/12/04/132620287_p0.jpg
+image: ./images/astro_deploy_1.jpg
 category: 博客指南
-tags: ["博客指南", "Pure", "使用指南"]
+tags: ["博客指南", "Pure"]
 ---
 
 > 本篇内容适用于将 Astro-Pure 主题部署到 xxx.github.io 仓库，然后通过 xxx.github.io 域名访问;
