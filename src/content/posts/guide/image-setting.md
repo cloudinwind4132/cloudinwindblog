@@ -2,7 +2,6 @@
 title: "自定义图床配置"
 published: 2025-12-14
 description: "自定义图床，结合 telegram"
-description: "如何将 Astro-Pure 主题部署到 Cloudflare Pages 平台?"
 image: ./images/astro_deploy_5.jpg
 category: 博客指南
 tags: ["博客指南", "图床"]
