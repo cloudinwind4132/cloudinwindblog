@@ -4,7 +4,7 @@ published: 2026-01-02
 pinned: true
 description: "如何使用 Firefly 博客模板。"
 image: "./images/cover.avif"
-tags: ["Firefly", "博客", "Markdown", "使用指南"]
+tags: ["Firefly", "博客"]
 category: 博客指南
 draft: false
 ---
