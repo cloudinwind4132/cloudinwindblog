@@ -198,7 +198,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![VitePress](./images/vitepress.avif)
+![VitePress](../images/vitepress.avif)
 
 ---
 
