@@ -1,6 +1,6 @@
 ---
 title: 环境配置全过程
-category: 学习
+category: Technical
 tags: [服务器]
 published: 2025-02-27
 ---

@@ -1,7 +1,7 @@
 ---
 title: ubuntu 22.04 安装 docker
 tags: [服务器]
-category: 学习
+category: Technical
 published: 2025-02-27 
 ---
 

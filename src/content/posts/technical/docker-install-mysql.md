@@ -1,7 +1,7 @@
 ---
 title: docker安装mysql
 published: 2025-02-27
-category: 学习
+category: Technical
 tags: [服务器]
 ---
 

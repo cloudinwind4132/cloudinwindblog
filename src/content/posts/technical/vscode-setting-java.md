@@ -1,7 +1,7 @@
 ---
 title: VSCode 配置 Java 环境
 slug: 1718178585772
-category: 学习
+category: Technical
 tags: [服务器]
 published: 2025-02-27 
 ---

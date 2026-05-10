@@ -1,6 +1,6 @@
 ---
 title: 服务器中添加图标
-category: 学习
+category: Technical
 tags: [服务器, 工具]
 published: 2025-02-27
 ---

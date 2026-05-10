@@ -1,6 +1,6 @@
 ---
 title: Jupyter中配置虚拟环境
-categories: 学习
+category: Technical
 tags: [服务器]
 published: 2025-02-27
 ---

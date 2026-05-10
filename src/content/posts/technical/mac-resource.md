@@ -3,7 +3,7 @@ title: MAC 相关资料
 description:  MAC 相关软件
 published: 2025-03-01
 image: ./images/learn_resource_1.jpg
-category: 学习
+category: Technical
 tags: [资料, 工具, mac]
 ---
 

@@ -2,7 +2,7 @@
 title: 文本格式转换（TXT to EPUB）
 description: 将 TXT 文本转换为 EPUB, 更多用于电子书
 published: 2025-02-27
-category: 学习
+category: Technical
 tags: [工具]
 ---
 ## txt 转 epub
