@@ -166,7 +166,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![Obsidian](./images/obsidian.avif)
+![Obsidian](../images/obsidian.avif)
 
 ---
 
