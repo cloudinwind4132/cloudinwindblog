@@ -1,7 +1,6 @@
 ---
 title: "Astro-Pure Blog 多平台部署(2)-Vercel（适用于 Firefly）"
-publishDate: 2025-12-11
-updatedDate: 2025-12-11
+published: 2025-12-11
 description: "将 astro 部署到 verel"
 image: ./images/astro_deploy_2.jpg
 category: 博客指南
