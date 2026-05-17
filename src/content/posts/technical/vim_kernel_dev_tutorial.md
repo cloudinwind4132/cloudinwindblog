@@ -2,7 +2,7 @@
 title: Vim 使用教程
 category: Technical
 tags: [vim, 工具]
-published: 2025-02-27
+published: 2026-05-17
 ---
 
 # Vim Linux 内核开发教程
