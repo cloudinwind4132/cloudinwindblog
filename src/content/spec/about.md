@@ -25,6 +25,6 @@
 欢迎通过以下方式联系我：
 
 - 💻 **GitHub**: [CuteLeaf](https://github.com/cloudinwind)
-- ✉️ **Email**: [cloudinwind@outlook.com](mailto:xiaye@msn.com)
+- ✉️ **Email**: [cloudinwind@outlook.com](mailto:cloudinwind@outlook.com)
 
 
