@@ -185,12 +185,12 @@ export const siteConfig: SiteConfig = {
 			uid: "38932988",
 		},
 		// TMDB 配置（可选，需要翻墙）
-		// tmdb: {
-		//   // TMDB API 密钥
-		//   apiKey: "your_tmdb_api_key",
-		//   // TMDB 列表 ID
-		//   listId: "your_list_id",
-		// },
+		tmdb: {
+		  	// TMDB API 密钥
+		  	apiKey: "e4d02a97255e712806721a39e6828971",
+		    // TMDB 列表 ID
+		   	listId: "8665801",
+		},
 	},
 
 	// 分页配置
