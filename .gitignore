@@ -37,3 +37,6 @@ Firefly-docs/
 cache/
 package/
 .obsidian/
+
+# music player cache (auto-generated per-track hash)
+*.mp3.md5
