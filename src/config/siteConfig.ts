@@ -15,8 +15,7 @@ export const siteConfig: SiteConfig = {
 	site_url: "https://cloudinwind111.top",
 
 	// 站点描述
-	description:
-		"日月交替, 照耀古今, 以日月为名, 在世间争渡",
+	description: "日月交替, 照耀古今, 以日月为名, 在世间争渡",
 
 	// 站点关键词
 	keywords: [
@@ -110,6 +109,8 @@ export const siteConfig: SiteConfig = {
 		gallery: true,
 		// 追番页面开关
 		anime: true,
+		// NeoDB 阅览页面开关（书籍/音乐/游戏/播客）
+		neodb: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
@@ -177,6 +178,19 @@ export const siteConfig: SiteConfig = {
 		categoryOrder: ["anime", "book", "music", "game"],
 	},
 
+	// NeoDB 阅览配置（书籍/音乐/游戏/播客）
+	neodb: {
+		// NeoDB 访问令牌，从 https://neodb.social/developer/ 获取
+		// 也可通过环境变量 NEODB_ACCESS_TOKEN 设置（优先级更高）
+		accessToken: "cCjZyZ5LEeMhzokMbp0aXjhCLvEaa1eGyYhcVmWXBjc15B7dpCqMNN9LJg",
+		// 要获取的条目类别
+		categories: ["book", "music", "game", "podcast"],
+		// 要获取的架位：complete=看过, progress=在看, wishlist=想看, dropped=抛弃
+		shelves: ["complete", "progress", "wishlist", "dropped"],
+		// Tab 排列顺序
+		categoryOrder: ["book", "music", "game", "podcast"],
+	},
+
 	// 追番配置（Bilibili + TMDB）
 	anime: {
 		// Bilibili 配置
@@ -186,10 +200,10 @@ export const siteConfig: SiteConfig = {
 		},
 		// TMDB 配置（可选，需要翻墙）
 		tmdb: {
-		  	// TMDB API 密钥
-		  	apiKey: "e4d02a97255e712806721a39e6828971",
-		    // TMDB 列表 ID
-		   	listId: "8665801",
+			// TMDB API 密钥
+			apiKey: "e4d02a97255e712806721a39e6828971",
+			// TMDB 列表 ID
+			listId: "8665801",
 		},
 	},
 

@@ -53,6 +53,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 番组计划
 			LinkPresets.Bangumi,
+
+			// NeoDB 阅览
+			LinkPresets.NeoDB,
 		],
 	});
 
@@ -185,6 +188,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/anime/",
 		icon: "material-symbols:live-tv",
 		pageKey: "anime",
+	},
+	NeoDB: {
+		name: "阅览",
+		url: "/neodb/",
+		icon: "material-symbols:menu-book",
+		pageKey: "neodb",
 	},
 };
 

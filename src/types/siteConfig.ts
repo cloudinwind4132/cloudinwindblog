@@ -85,6 +85,7 @@ export type SiteConfig = {
 		bangumi: boolean;
 		gallery: boolean; // 相册页面开关
 		anime: boolean; // 追番页面开关
+		neodb: boolean; // NeoDB 阅览页面开关
 	};
 
 	// 分类导航栏开关
@@ -133,6 +134,14 @@ export type SiteConfig = {
 		apiUrl?: string; // Bangumi API 地址
 		subjectBaseUrl?: string; // 条目详情页地址
 		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[]; // 条目类型排序顺序
+	};
+
+	// NeoDB 阅览配置
+	neodb?: {
+		accessToken: string; // Bearer Token（也可用环境变量 NEODB_ACCESS_TOKEN，优先级更高）
+		categories?: ("book" | "music" | "game" | "podcast")[]; // 要获取的类别，默认全部
+		shelves?: ("complete" | "progress" | "wishlist" | "dropped")[]; // 要获取的架位，默认全部
+		categoryOrder?: ("book" | "music" | "game" | "podcast")[]; // Tab 排序顺序
 	};
 
 	// 追番配置（Bilibili + TMDB）

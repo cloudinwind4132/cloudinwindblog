@@ -1,0 +1,210 @@
+---
+import { Icon } from "astro-icon/components";
+import NeoDBGrid from "@/components/pages/neodb/NeoDBGrid.svelte";
+import { siteConfig } from "@/config";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import type { NeoDBMark } from "@/types/neodb";
+import { formatDateI18nWithTime } from "@/utils/date-utils";
+
+// 检查页面是否启用
+if (!siteConfig.pages.neodb) {
+	return Astro.redirect("/404/");
+}
+
+// 获取构建时间
+const buildTime = formatDateI18nWithTime(new Date());
+
+// ============ NeoDB 配置 ============
+const neodbConfig = siteConfig.neodb;
+const NEODB_TOKEN =
+	process.env.NEODB_ACCESS_TOKEN || neodbConfig?.accessToken || "";
+const NEODB_BASE = "https://neodb.social";
+const NEODB_CATEGORIES = neodbConfig?.categories ?? [
+	"book",
+	"music",
+	"game",
+	"podcast",
+];
+const NEODB_SHELVES = neodbConfig?.shelves ?? [
+	"complete",
+	"progress",
+	"wishlist",
+	"dropped",
+];
+const CATEGORY_ORDER = neodbConfig?.categoryOrder ?? [
+	"book",
+	"music",
+	"game",
+	"podcast",
+];
+
+// 分类映射
+const categoryMap: Record<string, I18nKey> = {
+	book: I18nKey.neodbCategoryBook,
+	music: I18nKey.neodbCategoryMusic,
+	game: I18nKey.neodbCategoryGame,
+	podcast: I18nKey.neodbCategoryPodcast,
+};
+
+// ============ 数据获取 ============
+
+/** 获取指定架位+类别的全部标记（分页并发） */
+async function fetchNeodbShelf(
+	shelf: string,
+	category: string,
+): Promise<NeoDBMark[]> {
+	const headers = { Authorization: `Bearer ${NEODB_TOKEN}` };
+	const PAGE_SIZE = 100;
+	const firstUrl = `${NEODB_BASE}/api/me/shelf/${shelf}?category=${category}&page=1&page_size=${PAGE_SIZE}`;
+	const firstRes = await fetch(firstUrl, { headers });
+	if (!firstRes.ok) {
+		console.error(
+			`[NeoDB] ${shelf}/${category} fetch failed: ${firstRes.status}`,
+		);
+		return [];
+	}
+	const firstData = await firstRes.json();
+	let allMarks: NeoDBMark[] = [...(firstData.data || [])];
+	const totalPages = firstData.pages || 1;
+
+	// 开发模式只取第一页，加速调试
+	const isDev = import.meta.env.DEV;
+	if (!isDev && totalPages > 1) {
+		const promises: Promise<NeoDBMark[]>[] = [];
+		for (let p = 2; p <= totalPages; p++) {
+			promises.push(
+				fetch(
+					`${NEODB_BASE}/api/me/shelf/${shelf}?category=${category}&page=${p}&page_size=${PAGE_SIZE}`,
+					{ headers },
+				)
+					.then((r) => r.json())
+					.then((d: { data?: NeoDBMark[] }) => d.data || []),
+			);
+		}
+		const rest = await Promise.all(promises);
+		for (const batch of rest) allMarks.push(...batch);
+	}
+	return allMarks;
+}
+
+// 按类别分组的数据
+const neodbData: Record<string, NeoDBMark[]> = {};
+const tabs: Array<{ id: string; name: string; count: number }> = [];
+let fetchFailed = false;
+
+const isConfigured = !!NEODB_TOKEN;
+
+if (!isConfigured) {
+	console.log("[NeoDB] ⚠️ 未配置 accessToken，跳过数据获取");
+} else {
+	console.log(
+		`[NeoDB] 开始获取：categories=[${NEODB_CATEGORIES.join(",")}] shelves=[${NEODB_SHELVES.join(",")}]`,
+	);
+	for (const category of NEODB_CATEGORIES) {
+		const labelKey = categoryMap[category];
+		if (!labelKey) continue;
+		try {
+			// 并发获取该类别的所有架位
+			const shelfTasks = NEODB_SHELVES.map((shelf) =>
+				fetchNeodbShelf(shelf, category).catch(() => [] as NeoDBMark[]),
+			);
+			const shelfResults = await Promise.all(shelfTasks);
+			const allMarks = shelfResults.flat();
+
+			// 过滤无 uuid 的无效条目
+			const validMarks = allMarks.filter((m) => m.item?.uuid);
+			neodbData[category] = validMarks;
+			if (validMarks.length > 0) {
+				tabs.push({
+					id: category,
+					name: i18n(labelKey),
+					count: validMarks.length,
+				});
+			}
+			console.log(`[NeoDB] ${category}: ${validMarks.length} 条`);
+		} catch (error: unknown) {
+			console.error(`[NeoDB] 获取 ${category} 数据失败:`, error);
+			fetchFailed = true;
+		}
+	}
+}
+
+// 按 categoryOrder 排序 tabs
+if (CATEGORY_ORDER.length > 0) {
+	tabs.sort((a, b) => {
+		const ai = CATEGORY_ORDER.indexOf(a.id as (typeof CATEGORY_ORDER)[number]);
+		const bi = CATEGORY_ORDER.indexOf(b.id as (typeof CATEGORY_ORDER)[number]);
+		if (ai === -1 && bi === -1) return 0;
+		if (ai === -1) return 1;
+		if (bi === -1) return -1;
+		return ai - bi;
+	});
+}
+
+const activeTab = tabs[0]?.id || "book";
+---
+
+<MainGridLayout title={i18n(I18nKey.neodb)} description={i18n(I18nKey.neodbSubtitle)}>
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-4 sm:px-6 md:px-9 py-4 sm:py-6 relative w-full">
+      <!-- 页面标题 -->
+      <div class="relative w-full mb-8">
+        <div class="mb-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+              <Icon is:inline name="material-symbols:menu-book" class="text-[1.5rem]"></Icon>
+            </div>
+            <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+              {i18n(I18nKey.neodb)}
+            </div>
+          </div>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {i18n(I18nKey.neodbSubtitle)}
+          </p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
+            {i18n(I18nKey.neodbLastUpdated)} {buildTime}
+          </p>
+        </div>
+
+        {fetchFailed ? (
+          /* 获取失败 */
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-(--btn-regular-bg) rounded-full mb-6 border border-(--line-divider)">
+              <Icon is:inline name="material-symbols:error-outline" class="text-[2rem] text-red-500" />
+            </div>
+            <h2 class="text-xl font-semibold text-black/80 dark:text-white/80 mb-3">
+              {i18n(I18nKey.neodbNoData)}
+            </h2>
+          </div>
+        ) : !isConfigured ? (
+          /* 未配置 */
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-(--btn-regular-bg) rounded-full mb-6 border border-(--line-divider)">
+              <Icon is:inline name="material-symbols:settings" class="text-[2rem] text-(--btn-content)" />
+            </div>
+            <h2 class="text-xl font-semibold text-black/80 dark:text-white/80 mb-3">
+              {i18n(I18nKey.neodbNotConfigured)}
+            </h2>
+            <p class="text-black/60 dark:text-white/60 mb-4 max-w-md mx-auto">
+              {i18n(I18nKey.neodbNotConfiguredDesc)}
+            </p>
+          </div>
+        ) : tabs.length > 0 ? (
+          <NeoDBGrid client:load {tabs} initialActiveTab={activeTab} neodbData={neodbData} />
+        ) : (
+          /* 无数据 */
+          <div class="text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-(--btn-regular-bg) rounded-full mb-6 border border-(--line-divider)">
+              <Icon is:inline name="material-symbols:inbox" class="text-[2rem] text-(--btn-content)" />
+            </div>
+            <h2 class="text-xl font-semibold text-black/80 dark:text-white/80 mb-3">
+              {i18n(I18nKey.neodbNoData)}
+            </h2>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</MainGridLayout>

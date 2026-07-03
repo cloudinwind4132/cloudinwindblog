@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Firefly is a feature-rich static blog theme built on **Astro 6** with **Svelte 5** for interactive components. It's a fork of [Fuwari](https://github.com/saicaca/fuwari) extended with extensive features. Primary language is Chinese (Simplified) with i18n for en, zh_TW, ja, ru.
+Firefly is a feature-rich static blog theme built on **Astro 7** with **Svelte 5** for interactive components. It's a fork of [Fuwari](https://github.com/saicaca/fuwari) extended with extensive features. Primary language is Chinese (Simplified) with i18n for zh_CN, en, zh_TW, ja, ru.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
 | `pnpm dev` | Dev server at `localhost:4321` |
-| `pnpm build` | Production build (icons → LQIPs → Astro build → Pagefind indexing) |
+| `pnpm build` | Production build (icons → LQIPs → Astro build → font subsetting → Pagefind indexing) |
 | `pnpm preview` | Preview production build |
 | `pnpm check` | `astro check` for type/error checking |
 | `pnpm type-check` | `tsc --noEmit --isolatedDeclarations` |
@@ -69,9 +69,11 @@ Defined in `src/content.config.ts`:
 
 ## Build Pipeline
 
-Multi-step: `scripts/generate-icons.js` → `scripts/generate-lqips.ts` → `astro build` → `pagefind --site dist`
+Multi-step: `scripts/generate-icons.js` → `scripts/generate-lqips.ts` → `astro build` → `scripts/subset-fonts.ts` → `pagefind --site dist`
 
-Icons/LQIP data are generated into `src/constants/` and committed. Regenerate with `pnpm icons` or `pnpm lqips`.
+The Astro config lives at `astro.config.mjs` (not `.ts`).
+
+Icons/LQIP data are generated into `src/constants/` and committed. Regenerate with `pnpm icons` or `pnpm lqips`. Font subsetting runs automatically during `pnpm build` (post-build step) for local fonts marked `subset: true`.
 
 ## Deployment
 

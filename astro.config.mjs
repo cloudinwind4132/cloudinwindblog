@@ -218,6 +218,9 @@ export default defineConfig({
 				if (pathname === "/anime/" && !siteConfig.pages.anime) {
 					return false;
 				}
+				if (pathname === "/neodb/" && !siteConfig.pages.neodb) {
+					return false;
+				}
 
 				return true;
 			},
