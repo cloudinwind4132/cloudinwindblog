@@ -10,11 +10,71 @@
 		empty: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
 	};
 
+	import { onMount } from "svelte";
+
 	interface Props {
 		talksData: TalksData;
+		instance: string;
+		userId: string;
 	}
 
-	let { talksData }: Props = $props();
+	let { talksData, instance, userId }: Props = $props();
+
+	// ---- client-side fallback fetch ----
+	let localTalks = $state(talksData.talks);
+	let localAccount = $state(talksData.account);
+	let isLoading = $state(false);
+	let loadError = $state(false);
+
+	async function clientFetch() {
+		if (localTalks.length > 0 || isLoading) return;
+		isLoading = true;
+		loadError = false;
+		try {
+			const all: MastodonStatus[] = [];
+			let lastId: string | null = null;
+			for (let i = 0; i < 5; i++) {
+				let url = `https://${instance}/api/v1/accounts/${userId}/statuses?limit=40`;
+				if (lastId) url += `&max_id=${lastId}`;
+				const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
+				if (!res.ok) break;
+				const data = await res.json();
+				if (!data || data.length === 0) break;
+				const filtered = data.filter(
+					(t: MastodonStatus) =>
+						!t.reblog &&
+						(!t.in_reply_to_account_id || t.in_reply_to_account_id === userId),
+				);
+				all.push(...filtered);
+				lastId = data[data.length - 1].id;
+				if (all.length >= 80) break;
+			}
+			if (all.length > 0) {
+				all.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
+				localTalks = all.slice(0, 80);
+				localAccount = {
+					username: all[0].account.username,
+					display_name: all[0].account.display_name,
+					avatar: all[0].account.avatar,
+					url: all[0].account.url,
+				};
+			}
+		} catch {
+			loadError = true;
+		} finally {
+			isLoading = false;
+		}
+	}
+
+	onMount(() => {
+		if (localTalks.length === 0) {
+			clientFetch();
+		}
+	});
+
+	// Use local state for rendering
+	const displayTalks = $derived(localTalks);
+	const displayAccount = $derived(localAccount);
 
 	// ---- thread building ----
 	interface Thread {
@@ -72,7 +132,7 @@
 		return threads;
 	}
 
-	const threads = $derived(buildThreads(talksData.talks));
+	const threads = $derived(buildThreads(displayTalks));
 
 	// ---- pagination ----
 	const ITEMS_PER_PAGE = 10;
@@ -115,25 +175,34 @@
 </script>
 
 <div bind:this={scrollContainer} class="talks-container">
-	{#if talksData.talks.length === 0}
-		<div class="flex flex-col items-center justify-center py-16 text-center">
-			<div class="w-20 h-20 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-4">
-				<span class="text-black/25 dark:text-white/25">{@html icons.empty}</span>
+	{#if displayTalks.length === 0}
+		{#if isLoading}
+			<div class="flex flex-col items-center justify-center py-16 text-center">
+				<div class="talks-spinner mb-4"></div>
+				<p class="text-sm text-black/50 dark:text-white/50">加载中...</p>
 			</div>
-			<h2 class="text-xl font-semibold text-black/50 dark:text-white/50 mb-2">暂无说说</h2>
-			<p class="text-sm text-black/30 dark:text-white/30">
-				还没有发表过说说，去
-				<a
-					href="https://{talksData.instance}/@{talksData.account?.username ?? ''}"
-					class="text-(--primary) hover:underline"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					{talksData.instance}
-				</a>
-				看看吧
-			</p>
-		</div>
+		{:else if loadError}
+			<div class="flex flex-col items-center justify-center py-16 text-center">
+				<div class="w-20 h-20 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-4">
+					<span class="text-4xl text-black/25 dark:text-white/25">!</span>
+				</div>
+				<h2 class="text-xl font-semibold text-black/50 dark:text-white/50 mb-2">加载失败</h2>
+				<p class="text-sm text-black/30 dark:text-white/30 mb-4">无法获取数据，请稍后重试</p>
+				<button class="talks-pagination-btn" onclick={clientFetch}>重试</button>
+			</div>
+		{:else}
+			<div class="flex flex-col items-center justify-center py-16 text-center">
+				<div class="w-20 h-20 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-4">
+					<span class="text-black/25 dark:text-white/25">{@html icons.empty}</span>
+				</div>
+				<h2 class="text-xl font-semibold text-black/50 dark:text-white/50 mb-2">暂无说说</h2>
+				<p class="text-sm text-black/30 dark:text-white/30">
+					还没有发表过说说，去
+					<a href="https://{talksData.instance}/@{displayAccount?.username ?? ''}" class="text-(--primary) hover:underline" target="_blank" rel="noopener noreferrer">{talksData.instance}</a>
+					看看吧
+				</p>
+			</div>
+		{/if}
 	{:else}
 		<!-- Threads -->
 		{#each pageThreads() as thread (thread.id)}
@@ -148,22 +217,22 @@
 					{/if}
 					<div class="talk-header">
 						<img
-							src={talksData.account?.avatar ?? ""}
+							src={displayAccount?.avatar ?? ""}
 							alt="avatar"
 							class="talk-avatar"
 							loading="lazy"
 						/>
 						<div class="talk-account-info">
 							<a
-								href={talksData.account?.url ?? "#"}
+								href={displayAccount?.url ?? "#"}
 								class="talk-display-name"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								{talksData.account?.display_name ?? talksData.account?.username ?? ""}
+								{displayAccount?.display_name ?? displayAccount?.username ?? ""}
 							</a>
 							<span class="talk-username">
-								@{talksData.account?.username ?? ""}@{talksData.instance}
+								@{displayAccount?.username ?? ""}@{talksData.instance}
 							</span>
 						</div>
 						<div class="talk-date">
@@ -301,6 +370,18 @@
 	.talks-container {
 		max-width: 800px;
 		margin: 0 auto;
+	}
+
+	.talks-spinner {
+		width: 40px;
+		height: 40px;
+		border: 3px solid var(--line-divider, rgba(128, 128, 128, 0.15));
+		border-top-color: var(--primary);
+		border-radius: 50%;
+		animation: talks-spin 0.8s linear infinite;
+	}
+	@keyframes talks-spin {
+		to { transform: rotate(360deg); }
 	}
 
 	/* Card */

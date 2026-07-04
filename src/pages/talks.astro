@@ -158,7 +158,7 @@ const lastUpdated = talks.length > 0
 					</p>
 				</div>
 			) : (
-				<TalksList client:load {talksData} />
+				<TalksList client:load {talksData} instance={INSTANCE} userId={USER_ID} />
 			)}
 		</div>
 	</div>
