@@ -197,6 +197,21 @@ enum I18nKey {
 	atlasNoSeries = "atlasNoSeries",
 	atlasNoSeriesDesc = "atlasNoSeriesDesc",
 
+	// 项目展示
+	projects = "projects",
+	projectsSubtitle = "projectsSubtitle",
+	projectsAll = "projectsAll",
+	projectsWeb = "projectsWeb",
+	projectsMobile = "projectsMobile",
+	projectsDesktop = "projectsDesktop",
+	projectsOther = "projectsOther",
+	projectsFeatured = "projectsFeatured",
+	projectsVisit = "projectsVisit",
+	projectsSource = "projectsSource",
+	projectStatusCompleted = "projectStatusCompleted",
+	projectStatusInProgress = "projectStatusInProgress",
+	projectStatusPlanned = "projectStatusPlanned",
+
 	// 时间线
 	timeline = "timeline",
 	timelineSubtitle = "timelineSubtitle",

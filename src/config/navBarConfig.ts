@@ -65,6 +65,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 时间线
 			LinkPresets.Timeline,
+
+		// 项目
+		LinkPresets.Projects,
 		],
 	});
 
@@ -221,6 +224,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/timeline/",
 		icon: "material-symbols:timeline",
 		pageKey: "timeline",
+	},
+	Projects: {
+		name: "项目",
+		url: "/projects/",
+		icon: "material-symbols:work",
+		pageKey: "projects",
 	},
 };
 

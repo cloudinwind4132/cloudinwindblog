@@ -89,6 +89,7 @@ export type SiteConfig = {
 		atlas: boolean; // 舆图总览页面开关
 		talks: boolean; // 说说页面开关
 		timeline: boolean; // 时间线页面开关
+		projects: boolean; // 项目展示页面开关
 	};
 
 	// 分类导航栏开关

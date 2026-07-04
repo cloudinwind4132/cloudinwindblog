@@ -117,6 +117,8 @@ export const siteConfig: SiteConfig = {
 		talks: true,
 		// 时间线页面开关（个人经历）
 		timeline: true,
+		// 项目展示页面开关
+		projects: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航

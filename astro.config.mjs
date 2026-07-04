@@ -227,10 +227,14 @@ export default defineConfig({
 				if (pathname === "/talks/" && !siteConfig.pages.talks) {
 					return false;
 				}
-				if (pathname === "/timeline/" && !siteConfig.pages.timeline) {
-					return false;
-				}
 
+
+			if (pathname === "/timeline/" && !siteConfig.pages.timeline) {
+				return false;
+			}
+			if (pathname === "/projects/" && !siteConfig.pages.projects) {
+				return false;
+			}
 				return true;
 			},
 		}),

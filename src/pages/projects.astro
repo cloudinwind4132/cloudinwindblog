@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+import FilterTabs from "@/components/common/FilterTabs.astro";
+import ProjectCard from "@/components/pages/projects/ProjectCard.astro";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { siteConfig } from "@/config";
+import { projectsData } from "@/config/projectsData";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+
+if (!siteConfig.pages.projects) {
+  return Astro.redirect("/404/");
+}
+
+const categories = [...new Set(projectsData.map((p) => p.category))];
+
+const getCategoryIcon = (cat: string) => {
+  switch (cat) {
+    case "web": return "material-symbols:language";
+    case "mobile": return "material-symbols:smartphone";
+    case "desktop": return "material-symbols:desktop-windows";
+    default: return "material-symbols:widgets";
+  }
+};
+
+const getCategoryText = (cat: string) => {
+  switch (cat) {
+    case "web": return i18n(I18nKey.projectsWeb);
+    case "mobile": return i18n(I18nKey.projectsMobile);
+    case "desktop": return i18n(I18nKey.projectsDesktop);
+    default: return i18n(I18nKey.projectsOther);
+  }
+};
+
+const filterTabs = [
+  {
+    value: "all",
+    label: i18n(I18nKey.projectsAll),
+    icon: "material-symbols:apps",
+    count: projectsData.length,
+  },
+  ...categories.map((cat) => ({
+    value: cat,
+    label: getCategoryText(cat),
+    icon: getCategoryIcon(cat),
+    count: projectsData.filter((p) => p.category === cat).length,
+  })),
+];
+---
+
+<MainGridLayout title={i18n(I18nKey.projects)} description={i18n(I18nKey.projectsSubtitle)}>
+  <script is:inline src="/js/filter-tabs-handler.js"></script>
+
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-6 sm:px-9 py-6 relative w-full">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+          <Icon is:inline name="material-symbols:work" class="text-2xl" />
+        </div>
+        <div>
+          <h1 class="text-3xl font-bold text-black/90 dark:text-white/90">{i18n(I18nKey.projects)}</h1>
+          <p class="text-sm text-black/50 dark:text-white/50 mt-1">{i18n(I18nKey.projectsSubtitle)}</p>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <FilterTabs tabs={filterTabs} dataAttr="category" />
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        {projectsData.map((project) => <ProjectCard project={project} maxTechStack={4} />)}
+      </div>
+
+      <div id="no-results" class="hidden text-center py-16">
+        <Icon name="material-symbols:search-off-rounded" class="text-6xl text-black/15 dark:text-white/15 mb-4" />
+        <p class="text-black/40 dark:text-white/40 text-lg">没有匹配的项目</p>
+      </div>
+    </div>
+  </div>
+</MainGridLayout>
