@@ -88,6 +88,7 @@ export type SiteConfig = {
 		neodb: boolean; // NeoDB 阅览页面开关
 		atlas: boolean; // 舆图总览页面开关
 		talks: boolean; // 说说页面开关
+		timeline: boolean; // 时间线页面开关
 	};
 
 	// 分类导航栏开关

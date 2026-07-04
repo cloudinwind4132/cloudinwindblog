@@ -200,6 +200,18 @@ export const zh_TW: Translation = {
 	[Key.atlasNoSeries]: "暫無系列",
 	[Key.atlasNoSeriesDesc]: "給文章添加 emoji 前綴的標籤（如 🗺小行跡），即可自動歸入系列並在輿圖中展示。",
 
+	[Key.timeline]: "時間線",
+	[Key.timelineSubtitle]: "我的成長歷程與重要里程碑",
+	[Key.timelineEducation]: "教育",
+	[Key.timelineWork]: "工作",
+	[Key.timelineProject]: "專案",
+	[Key.timelineAchievement]: "成就",
+	[Key.timelinePresent]: "至今",
+	[Key.timelineMonths]: "個月",
+	[Key.timelineYears]: "年",
+	[Key.timelineCurrent]: "進行中",
+	[Key.timelineAchievements]: "成果",
+
 	[Key.talks]: "說說",
 	[Key.talksSubtitle]: "碎碎念 · 記錄生活中的點滴",
 

@@ -62,6 +62,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 说说
 			LinkPresets.Talks,
+
+			// 时间线
+			LinkPresets.Timeline,
 		],
 	});
 
@@ -212,6 +215,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/talks/",
 		icon: "material-symbols:chat-bubble-outline-rounded",
 		pageKey: "talks",
+	},
+	Timeline: {
+		name: "时间线",
+		url: "/timeline/",
+		icon: "material-symbols:timeline",
+		pageKey: "timeline",
 	},
 };
 

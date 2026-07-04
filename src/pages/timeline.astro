@@ -1,0 +1,103 @@
+---
+import { Icon } from "astro-icon/components";
+import FilterTabs from "@/components/common/FilterTabs.astro";
+import TimelineCard from "@/components/pages/timeline/TimelineCard.astro";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { siteConfig } from "@/config";
+import { timelineData } from "@/config/timelineData";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+
+if (!siteConfig.pages.timeline) {
+  return Astro.redirect("/404/");
+}
+
+const types = ["education", "work", "project", "achievement"] as const;
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case "education": return "material-symbols:school";
+    case "work": return "material-symbols:work";
+    case "project": return "material-symbols:code";
+    case "achievement": return "material-symbols:emoji-events";
+    default: return "material-symbols:apps";
+  }
+};
+
+const getTypeText = (type: string) => {
+  switch (type) {
+    case "education": return i18n(I18nKey.timelineEducation);
+    case "work": return i18n(I18nKey.timelineWork);
+    case "project": return i18n(I18nKey.timelineProject);
+    case "achievement": return i18n(I18nKey.timelineAchievement);
+    default: return type;
+  }
+};
+
+const filterTabs = [
+  {
+    value: "all",
+    label: i18n(I18nKey.all),
+    icon: "material-symbols:apps",
+    count: timelineData.length,
+  },
+  ...types.map((type) => ({
+    value: type,
+    label: getTypeText(type),
+    icon: getTypeIcon(type),
+    count: timelineData.filter((item) => item.type === type).length,
+  })),
+];
+
+const title = i18n(I18nKey.timeline);
+const subtitle = i18n(I18nKey.timelineSubtitle);
+---
+
+<MainGridLayout title={title} description={subtitle}>
+  <script is:inline src="/js/filter-tabs-handler.js"></script>
+
+  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-6 sm:px-9 py-6 relative w-full">
+      <!-- Header -->
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+          <Icon is:inline name="material-symbols:timeline" class="text-2xl" />
+        </div>
+        <div>
+          <h1 class="text-3xl font-bold text-black/90 dark:text-white/90">{title}</h1>
+          <p class="text-sm text-black/50 dark:text-white/50 mt-1">{subtitle}</p>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <FilterTabs tabs={filterTabs} dataAttr="type" />
+      </div>
+
+      <div id="timeline-list" class="timeline-list">
+        {timelineData.map((item) => <TimelineCard item={item} />)}
+      </div>
+
+      <div id="no-results" class="hidden text-center py-16">
+        <Icon name="material-symbols:search-off-rounded" class="text-6xl text-black/15 dark:text-white/15 mb-4" />
+        <p class="text-black/40 dark:text-white/40 text-lg">没有匹配的结果</p>
+      </div>
+    </div>
+  </div>
+</MainGridLayout>
+
+<style>
+  .timeline-list {
+    position: relative;
+  }
+
+  .timeline-list::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--line-divider);
+    border-radius: 1px;
+  }
+</style>

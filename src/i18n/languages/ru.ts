@@ -203,6 +203,18 @@ export const ru: Translation = {
 	[Key.atlasNoSeries]: "Нет серий",
 	[Key.atlasNoSeriesDesc]: "Добавьте теги с эмодзи (например, 🗺Путешествия) к статьям, чтобы они автоматически группировались в серии.",
 
+	[Key.timeline]: "Хронология",
+	[Key.timelineSubtitle]: "Мой путь роста и важные вехи",
+	[Key.timelineEducation]: "Образование",
+	[Key.timelineWork]: "Работа",
+	[Key.timelineProject]: "Проект",
+	[Key.timelineAchievement]: "Достижение",
+	[Key.timelinePresent]: "Настоящее",
+	[Key.timelineMonths]: "мес.",
+	[Key.timelineYears]: "г.",
+	[Key.timelineCurrent]: "Текущее",
+	[Key.timelineAchievements]: "Достижения",
+
 	[Key.talks]: "Заметки",
 	[Key.talksSubtitle]: "Мысли · Кусочки повседневной жизни",
 

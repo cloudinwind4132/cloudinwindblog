@@ -198,6 +198,18 @@ export const zh_CN: Translation = {
 	[Key.atlasNoSeries]: "暂无系列",
 	[Key.atlasNoSeriesDesc]: "给文章添加 emoji 前缀的标签（如 🗺小行迹），即可自动归入系列并在舆图中展示。",
 
+	[Key.timeline]: "时间线",
+	[Key.timelineSubtitle]: "我的成长历程与重要时刻",
+	[Key.timelineEducation]: "教育",
+	[Key.timelineWork]: "工作",
+	[Key.timelineProject]: "项目",
+	[Key.timelineAchievement]: "成就",
+	[Key.timelinePresent]: "至今",
+	[Key.timelineMonths]: "个月",
+	[Key.timelineYears]: "年",
+	[Key.timelineCurrent]: "进行中",
+	[Key.timelineAchievements]: "成果",
+
 	[Key.talks]: "说说",
 	[Key.talksSubtitle]: "碎碎念 · 记录生活中的点滴",
 

@@ -202,6 +202,18 @@ export const en: Translation = {
 	[Key.atlasNoSeries]: "No Series",
 	[Key.atlasNoSeriesDesc]: "Add emoji-prefixed tags (e.g. 🗺Travel) to your posts, and they will be automatically grouped into series shown here.",
 
+	[Key.timeline]: "Timeline",
+	[Key.timelineSubtitle]: "My growth journey and important milestones",
+	[Key.timelineEducation]: "Education",
+	[Key.timelineWork]: "Work",
+	[Key.timelineProject]: "Project",
+	[Key.timelineAchievement]: "Achievement",
+	[Key.timelinePresent]: "Present",
+	[Key.timelineMonths]: "months",
+	[Key.timelineYears]: "years",
+	[Key.timelineCurrent]: "Current",
+	[Key.timelineAchievements]: "Achievements",
+
 	[Key.talks]: "Talks",
 	[Key.talksSubtitle]: "Musings · Bits and pieces of daily life",
 

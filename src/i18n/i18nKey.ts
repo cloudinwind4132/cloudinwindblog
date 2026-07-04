@@ -197,6 +197,19 @@ enum I18nKey {
 	atlasNoSeries = "atlasNoSeries",
 	atlasNoSeriesDesc = "atlasNoSeriesDesc",
 
+	// 时间线
+	timeline = "timeline",
+	timelineSubtitle = "timelineSubtitle",
+	timelineEducation = "timelineEducation",
+	timelineWork = "timelineWork",
+	timelineProject = "timelineProject",
+	timelineAchievement = "timelineAchievement",
+	timelinePresent = "timelinePresent",
+	timelineMonths = "timelineMonths",
+	timelineYears = "timelineYears",
+	timelineCurrent = "timelineCurrent",
+	timelineAchievements = "timelineAchievements",
+
 	// 说说页面
 	talks = "talks",
 	talksSubtitle = "talksSubtitle",

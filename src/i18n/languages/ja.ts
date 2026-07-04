@@ -202,6 +202,18 @@ export const ja: Translation = {
 	[Key.atlasNoSeries]: "シリーズなし",
 	[Key.atlasNoSeriesDesc]: "記事に絵文字プレフィックスのタグ（例：🗺旅行）を追加すると、自動的にシリーズとしてグループ化されます。",
 
+	[Key.timeline]: "タイムライン",
+	[Key.timelineSubtitle]: "私の成長の軌跡と重要な節目",
+	[Key.timelineEducation]: "教育",
+	[Key.timelineWork]: "仕事",
+	[Key.timelineProject]: "プロジェクト",
+	[Key.timelineAchievement]: "実績",
+	[Key.timelinePresent]: "現在",
+	[Key.timelineMonths]: "ヶ月",
+	[Key.timelineYears]: "年",
+	[Key.timelineCurrent]: "進行中",
+	[Key.timelineAchievements]: "成果",
+
 	[Key.talks]: "つぶやき",
 	[Key.talksSubtitle]: "日常のひとこと · 生活の記録",
 

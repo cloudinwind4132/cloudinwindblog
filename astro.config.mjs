@@ -227,6 +227,9 @@ export default defineConfig({
 				if (pathname === "/talks/" && !siteConfig.pages.talks) {
 					return false;
 				}
+				if (pathname === "/timeline/" && !siteConfig.pages.timeline) {
+					return false;
+				}
 
 				return true;
 			},

@@ -115,6 +115,8 @@ export const siteConfig: SiteConfig = {
 		atlas: true,
 		// 说说页面开关（Mastodon 碎碎念）
 		talks: true,
+		// 时间线页面开关（个人经历）
+		timeline: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
