@@ -113,6 +113,8 @@ export const siteConfig: SiteConfig = {
 		neodb: true,
 		// 舆图总览页面开关（系列文章地图）
 		atlas: true,
+		// 说说页面开关（Mastodon 碎碎念）
+		talks: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
@@ -207,6 +209,15 @@ export const siteConfig: SiteConfig = {
 			// TMDB 列表 ID
 			listId: "8665801",
 		},
+	},
+
+	// Mastodon 说说配置
+	// 用于获取你的 Mastodon/GotoSocial 账号的嘟文
+	// 也可通过环境变量 MASTODON_ACCESS_TOKEN 设置（优先级更高）
+	mastodon: {
+		instance: "scg.owu.one",
+		userId: "01GWJX8283ZG1GBVKBWWH9MGPQ",
+		accessToken: "MJQWYJG1ODITYJJIOS0ZYZIWLTK0NDUTY2U1ZWIZOTQ3ZDK5",
 	},
 
 	// 分页配置

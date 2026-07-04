@@ -200,6 +200,9 @@ export const zh_TW: Translation = {
 	[Key.atlasNoSeries]: "暫無系列",
 	[Key.atlasNoSeriesDesc]: "給文章添加 emoji 前綴的標籤（如 🗺小行跡），即可自動歸入系列並在輿圖中展示。",
 
+	[Key.talks]: "說說",
+	[Key.talksSubtitle]: "碎碎念 · 記錄生活中的點滴",
+
 	[Key.neodb]: "閱覽",
 	[Key.neodbSubtitle]: "我的 NeoDB 收藏",
 	[Key.neodbCategoryBook]: "書籍",

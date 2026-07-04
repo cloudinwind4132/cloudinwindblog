@@ -202,6 +202,9 @@ export const en: Translation = {
 	[Key.atlasNoSeries]: "No Series",
 	[Key.atlasNoSeriesDesc]: "Add emoji-prefixed tags (e.g. 🗺Travel) to your posts, and they will be automatically grouped into series shown here.",
 
+	[Key.talks]: "Talks",
+	[Key.talksSubtitle]: "Musings · Bits and pieces of daily life",
+
 	[Key.neodb]: "Library",
 	[Key.neodbSubtitle]: "My NeoDB Collection",
 	[Key.neodbCategoryBook]: "Books",

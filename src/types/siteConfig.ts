@@ -87,6 +87,7 @@ export type SiteConfig = {
 		anime: boolean; // 追番页面开关
 		neodb: boolean; // NeoDB 阅览页面开关
 		atlas: boolean; // 舆图总览页面开关
+		talks: boolean; // 说说页面开关
 	};
 
 	// 分类导航栏开关
@@ -156,6 +157,13 @@ export type SiteConfig = {
 		};
 	};
 
+
+		// Mastodon 说说配置
+		mastodon?: {
+			instance: string;
+			userId: string;
+			accessToken: string;
+		};
 	// 分页配置
 	pagination: {
 		postsPerPage: number; // 每页显示的文章数量

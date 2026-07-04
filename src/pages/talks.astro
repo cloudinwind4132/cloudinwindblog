@@ -1,0 +1,165 @@
+---
+import { Icon } from "astro-icon/components";
+import TalksList from "@/components/pages/talks/TalksList.svelte";
+import { siteConfig } from "@/config";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import { formatDateI18nWithTime } from "@/utils/date-utils";
+import type { MastodonStatus, TalksData } from "@/types/mastodon";
+
+if (!siteConfig.pages.talks) {
+	return Astro.redirect("/404/");
+}
+
+const mastodonConfig = siteConfig.mastodon;
+const TOKEN =
+	process.env.MASTODON_ACCESS_TOKEN || mastodonConfig?.accessToken || "";
+const INSTANCE = mastodonConfig?.instance || "scg.owu.one";
+const USER_ID = mastodonConfig?.userId || "";
+const MAX_TALKS = 80;
+
+async function fetchStatuses(pinned = false): Promise<MastodonStatus[]> {
+	if (!TOKEN || !USER_ID) return [];
+
+	const allToots: MastodonStatus[] = [];
+	let lastId: string | null = null;
+	const maxPages = import.meta.env.DEV ? 1 : 5;
+	const limit = 40;
+
+	for (let i = 0; i < maxPages; i++) {
+		try {
+			let url = `https://${INSTANCE}/api/v1/accounts/${USER_ID}/statuses?limit=${limit}`;
+			if (pinned) url += "&pinned=true";
+			if (lastId) url += `&max_id=${lastId}`;
+
+			const res = await fetch(url, {
+				headers: {
+					Accept: "application/json",
+					Authorization: `Bearer ${TOKEN}`,
+					"User-Agent": "Astro/Firefly",
+				},
+				signal: AbortSignal.timeout(15_000),
+			});
+
+			if (!res.ok) break;
+			const data: MastodonStatus[] = await res.json();
+			if (!data || data.length === 0) break;
+
+			const filtered = data.filter(
+				(t) =>
+					!t.reblog &&
+					(!t.in_reply_to_account_id ||
+						t.in_reply_to_account_id === USER_ID),
+			);
+			allToots.push(...filtered);
+			lastId = data[data.length - 1].id;
+
+			if (pinned || allToots.length >= MAX_TALKS) break;
+		} catch {
+			break;
+		}
+	}
+	return allToots;
+}
+
+// Fetch pinned + regular, merge & dedupe
+let talks: MastodonStatus[] = [];
+let account: MastodonStatus["account"] | null = null;
+
+if (TOKEN && USER_ID) {
+	try {
+		const pinned = await fetchStatuses(true);
+		const regular = await fetchStatuses(false);
+
+		const seen = new Set<string>();
+		const allToots: MastodonStatus[] = [];
+		for (const toot of [...pinned, ...regular]) {
+			if (!seen.has(toot.id)) {
+				seen.add(toot.id);
+				allToots.push(toot);
+			}
+		}
+
+		talks = allToots
+			.sort(
+				(a, b) =>
+					Date.parse(b.created_at) - Date.parse(a.created_at),
+			)
+			.slice(0, MAX_TALKS);
+
+		if (talks.length > 0) {
+			account = {
+				username: talks[0].account.username,
+				display_name: talks[0].account.display_name,
+				avatar: talks[0].account.avatar,
+				url: talks[0].account.url,
+			};
+		}
+	} catch {
+		// Silent fail — page will show empty state
+	}
+}
+
+const talksData: TalksData = {
+	instance: INSTANCE,
+	account,
+	talks,
+};
+
+const lastUpdated = talks.length > 0
+	? formatDateI18nWithTime(new Date())
+	: null;
+---
+
+<MainGridLayout
+	title={i18n(I18nKey.talks)}
+	description={i18n(I18nKey.talksSubtitle)}
+>
+	<div class="flex w-full rounded-(--radius-large) overflow-hidden relative mb-4">
+		<div class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full">
+			<!-- Header -->
+			<div class="flex items-center gap-3 mb-4">
+				<div
+					class="w-12 h-12 rounded-xl bg-(--primary) flex items-center justify-center text-white dark:text-black/70"
+				>
+					<Icon is:inline name="material-symbols:chat-bubble-outline-rounded" class="text-2xl" />
+				</div>
+				<div>
+					<h1 class="text-3xl font-bold text-black/90 dark:text-white/90">
+						{i18n(I18nKey.talks)}
+					</h1>
+					<p class="text-sm text-black/50 dark:text-white/50 mt-1">
+						{i18n(I18nKey.talksSubtitle)}
+						{lastUpdated && (
+							<span>
+								{" · "}
+								{talks.length}
+								{" "}条 · 更新于{" "}
+								{lastUpdated}
+							</span>
+						)}
+					</p>
+				</div>
+			</div>
+
+			{!TOKEN || !USER_ID ? (
+				<div class="flex flex-col items-center justify-center py-16 text-center">
+					<div
+						class="w-20 h-20 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-4"
+					>
+						<Icon is:inline name="material-symbols:settings-outline" class="text-4xl text-black/25 dark:text-white/25" />
+					</div>
+					<h2 class="text-xl font-semibold text-black/50 dark:text-white/50 mb-2">
+						未配置 Mastodon
+					</h2>
+					<p class="text-sm text-black/30 dark:text-white/30 max-w-md">
+						请在 siteConfig 中配置 mastodon 或设置 MASTODON_ACCESS_TOKEN 环境变量
+					</p>
+				</div>
+			) : (
+				<TalksList client:load {talksData} />
+			)}
+		</div>
+	</div>
+</MainGridLayout>

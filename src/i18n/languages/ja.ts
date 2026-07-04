@@ -202,6 +202,9 @@ export const ja: Translation = {
 	[Key.atlasNoSeries]: "シリーズなし",
 	[Key.atlasNoSeriesDesc]: "記事に絵文字プレフィックスのタグ（例：🗺旅行）を追加すると、自動的にシリーズとしてグループ化されます。",
 
+	[Key.talks]: "つぶやき",
+	[Key.talksSubtitle]: "日常のひとこと · 生活の記録",
+
 	[Key.neodb]: "ライブラリ",
 	[Key.neodbSubtitle]: "私の NeoDB コレクション",
 	[Key.neodbCategoryBook]: "書籍",

@@ -197,6 +197,10 @@ enum I18nKey {
 	atlasNoSeries = "atlasNoSeries",
 	atlasNoSeriesDesc = "atlasNoSeriesDesc",
 
+	// 说说页面
+	talks = "talks",
+	talksSubtitle = "talksSubtitle",
+
 	// NeoDB 阅览页面
 	neodb = "neodb",
 	neodbSubtitle = "neodbSubtitle",

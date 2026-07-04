@@ -59,6 +59,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 舆图
 			LinkPresets.Atlas,
+
+			// 说说
+			LinkPresets.Talks,
 		],
 	});
 
@@ -203,6 +206,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/atlas/",
 		icon: "material-symbols:map-outline",
 		pageKey: "atlas",
+	},
+	Talks: {
+		name: "说说",
+		url: "/talks/",
+		icon: "material-symbols:chat-bubble-outline-rounded",
+		pageKey: "talks",
 	},
 };
 

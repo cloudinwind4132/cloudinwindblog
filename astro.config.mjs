@@ -224,6 +224,9 @@ export default defineConfig({
 				if (pathname === "/atlas/" && !siteConfig.pages.atlas) {
 					return false;
 				}
+				if (pathname === "/talks/" && !siteConfig.pages.talks) {
+					return false;
+				}
 
 				return true;
 			},

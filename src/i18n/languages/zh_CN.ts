@@ -198,6 +198,9 @@ export const zh_CN: Translation = {
 	[Key.atlasNoSeries]: "暂无系列",
 	[Key.atlasNoSeriesDesc]: "给文章添加 emoji 前缀的标签（如 🗺小行迹），即可自动归入系列并在舆图中展示。",
 
+	[Key.talks]: "说说",
+	[Key.talksSubtitle]: "碎碎念 · 记录生活中的点滴",
+
 	[Key.neodb]: "阅览",
 	[Key.neodbSubtitle]: "我的 NeoDB 收藏",
 	[Key.neodbCategoryBook]: "书籍",

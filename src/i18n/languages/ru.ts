@@ -203,6 +203,9 @@ export const ru: Translation = {
 	[Key.atlasNoSeries]: "Нет серий",
 	[Key.atlasNoSeriesDesc]: "Добавьте теги с эмодзи (например, 🗺Путешествия) к статьям, чтобы они автоматически группировались в серии.",
 
+	[Key.talks]: "Заметки",
+	[Key.talksSubtitle]: "Мысли · Кусочки повседневной жизни",
+
 	[Key.neodb]: "Библиотека",
 	[Key.neodbSubtitle]: "Моя коллекция NeoDB",
 	[Key.neodbCategoryBook]: "Книги",
