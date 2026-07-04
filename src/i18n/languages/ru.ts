@@ -194,6 +194,15 @@ export const ru: Translation = {
 	[Key.animeTypeConcert]: "Концерт",
 
 	// NeoDB
+	[Key.seriesWidget]: "Атлас",
+	[Key.atlas]: "Атлас",
+	[Key.atlasDescription]: "Исследуйте серии статей по тегам",
+	[Key.atlasPageTitle]: "Обзор Атласа",
+	[Key.atlasSeries]: "серий",
+	[Key.atlasPosts]: "статей",
+	[Key.atlasNoSeries]: "Нет серий",
+	[Key.atlasNoSeriesDesc]: "Добавьте теги с эмодзи (например, 🗺Путешествия) к статьям, чтобы они автоматически группировались в серии.",
+
 	[Key.neodb]: "Библиотека",
 	[Key.neodbSubtitle]: "Моя коллекция NeoDB",
 	[Key.neodbCategoryBook]: "Книги",

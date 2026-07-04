@@ -187,6 +187,16 @@ enum I18nKey {
 	animeTypeDrama = "animeTypeDrama",
 	animeTypeConcert = "animeTypeConcert",
 
+	// 舆图系列
+	seriesWidget = "seriesWidget",
+	atlas = "atlas",
+	atlasDescription = "atlasDescription",
+	atlasPageTitle = "atlasPageTitle",
+	atlasSeries = "atlasSeries",
+	atlasPosts = "atlasPosts",
+	atlasNoSeries = "atlasNoSeries",
+	atlasNoSeriesDesc = "atlasNoSeriesDesc",
+
 	// NeoDB 阅览页面
 	neodb = "neodb",
 	neodbSubtitle = "neodbSubtitle",

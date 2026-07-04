@@ -193,6 +193,15 @@ export const ja: Translation = {
 	[Key.animeTypeConcert]: "コンサート",
 
 	// NeoDB
+	[Key.seriesWidget]: "輿図",
+	[Key.atlas]: "輿図",
+	[Key.atlasDescription]: "タグで記事シリーズを探索",
+	[Key.atlasPageTitle]: "輿図の概要",
+	[Key.atlasSeries]: "シリーズ",
+	[Key.atlasPosts]: "記事",
+	[Key.atlasNoSeries]: "シリーズなし",
+	[Key.atlasNoSeriesDesc]: "記事に絵文字プレフィックスのタグ（例：🗺旅行）を追加すると、自動的にシリーズとしてグループ化されます。",
+
 	[Key.neodb]: "ライブラリ",
 	[Key.neodbSubtitle]: "私の NeoDB コレクション",
 	[Key.neodbCategoryBook]: "書籍",

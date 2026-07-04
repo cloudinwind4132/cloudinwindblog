@@ -111,6 +111,8 @@ export const siteConfig: SiteConfig = {
 		anime: true,
 		// NeoDB 阅览页面开关（书籍/音乐/游戏/播客）
 		neodb: true,
+		// 舆图总览页面开关（系列文章地图）
+		atlas: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航

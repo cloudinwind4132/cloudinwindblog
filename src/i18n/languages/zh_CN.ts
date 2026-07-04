@@ -189,6 +189,15 @@ export const zh_CN: Translation = {
 	[Key.animeTypeConcert]: "演唱会",
 
 	// NeoDB 阅览
+	[Key.seriesWidget]: "舆图",
+	[Key.atlas]: "舆图",
+	[Key.atlasDescription]: "沿系列标签探索文章地图",
+	[Key.atlasPageTitle]: "舆图总览",
+	[Key.atlasSeries]: "个系列",
+	[Key.atlasPosts]: "篇文章",
+	[Key.atlasNoSeries]: "暂无系列",
+	[Key.atlasNoSeriesDesc]: "给文章添加 emoji 前缀的标签（如 🗺小行迹），即可自动归入系列并在舆图中展示。",
+
 	[Key.neodb]: "阅览",
 	[Key.neodbSubtitle]: "我的 NeoDB 收藏",
 	[Key.neodbCategoryBook]: "书籍",

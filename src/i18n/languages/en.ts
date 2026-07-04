@@ -193,6 +193,15 @@ export const en: Translation = {
 	[Key.animeTypeConcert]: "Concert",
 
 	// NeoDB
+	[Key.seriesWidget]: "Atlas",
+	[Key.atlas]: "Atlas",
+	[Key.atlasDescription]: "Explore article series by tags",
+	[Key.atlasPageTitle]: "Atlas Overview",
+	[Key.atlasSeries]: "series",
+	[Key.atlasPosts]: "posts",
+	[Key.atlasNoSeries]: "No Series",
+	[Key.atlasNoSeriesDesc]: "Add emoji-prefixed tags (e.g. 🗺Travel) to your posts, and they will be automatically grouped into series shown here.",
+
 	[Key.neodb]: "Library",
 	[Key.neodbSubtitle]: "My NeoDB Collection",
 	[Key.neodbCategoryBook]: "Books",

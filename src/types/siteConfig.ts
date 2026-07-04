@@ -86,6 +86,7 @@ export type SiteConfig = {
 		gallery: boolean; // 相册页面开关
 		anime: boolean; // 追番页面开关
 		neodb: boolean; // NeoDB 阅览页面开关
+		atlas: boolean; // 舆图总览页面开关
 	};
 
 	// 分类导航栏开关

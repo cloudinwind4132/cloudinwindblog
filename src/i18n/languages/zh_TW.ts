@@ -191,6 +191,15 @@ export const zh_TW: Translation = {
 	[Key.animeTypeConcert]: "演唱會",
 
 	// NeoDB
+	[Key.seriesWidget]: "輿圖",
+	[Key.atlas]: "輿圖",
+	[Key.atlasDescription]: "沿系列標籤探索文章地圖",
+	[Key.atlasPageTitle]: "輿圖總覽",
+	[Key.atlasSeries]: "個系列",
+	[Key.atlasPosts]: "篇文章",
+	[Key.atlasNoSeries]: "暫無系列",
+	[Key.atlasNoSeriesDesc]: "給文章添加 emoji 前綴的標籤（如 🗺小行跡），即可自動歸入系列並在輿圖中展示。",
+
 	[Key.neodb]: "閱覽",
 	[Key.neodbSubtitle]: "我的 NeoDB 收藏",
 	[Key.neodbCategoryBook]: "書籍",

@@ -56,6 +56,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// NeoDB 阅览
 			LinkPresets.NeoDB,
+
+			// 舆图
+			LinkPresets.Atlas,
 		],
 	});
 
@@ -194,6 +197,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/neodb/",
 		icon: "material-symbols:menu-book",
 		pageKey: "neodb",
+	},
+	Atlas: {
+		name: "舆图",
+		url: "/atlas/",
+		icon: "material-symbols:map-outline",
+		pageKey: "atlas",
 	},
 };
 

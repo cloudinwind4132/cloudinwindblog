@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+import { siteConfig } from "@/config";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { getAllSeries } from "@/utils/series-utils";
+import { getSortedPosts } from "@/utils/content-utils";
+
+if (!siteConfig.pages.atlas) {
+	return Astro.redirect("/404/");
+}
+
+const allPosts = await getSortedPosts();
+const allSeries = getAllSeries(allPosts);
+---
+
+<MainGridLayout title={i18n(I18nKey.atlas)} description={i18n(I18nKey.atlasDescription)}>
+	<div class="flex w-full rounded-(--radius-large) overflow-hidden relative mb-4">
+		<div class="card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full">
+			<!-- Header -->
+			<div class="flex items-center gap-3 mb-4">
+				<div class="w-12 h-12 rounded-xl bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+					<Icon is:inline name="material-symbols:map-outline" class="text-2xl" />
+				</div>
+				<div>
+					<h1 class="text-3xl font-bold text-black/90 dark:text-white/90">
+						{i18n(I18nKey.atlasPageTitle)}
+					</h1>
+					<p class="text-sm text-black/50 dark:text-white/50 mt-1">
+						{i18n(I18nKey.atlasDescription)}
+					</p>
+				</div>
+			</div>
+
+			{
+				allSeries.length === 0 ? (
+					<div class="flex flex-col items-center justify-center py-16 text-center">
+						<div class="w-20 h-20 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-4">
+							<Icon is:inline name="material-symbols:map-off-outline" class="text-4xl text-black/25 dark:text-white/25" />
+						</div>
+						<h2 class="text-xl font-semibold text-black/50 dark:text-white/50 mb-2">
+							{i18n(I18nKey.atlasNoSeries)}
+						</h2>
+						<p class="text-sm text-black/30 dark:text-white/30 max-w-md">
+							{i18n(I18nKey.atlasNoSeriesDesc)}
+						</p>
+					</div>
+				) : (
+					<div>
+						<div class="mb-4 flex items-center gap-2 text-sm text-black/50 dark:text-white/50">
+							<span>{allSeries.length} {i18n(I18nKey.atlasSeries)}</span>
+							<span class="text-black/20 dark:text-white/20">|</span>
+							<span>{allSeries.reduce((sum, s) => sum + s.posts.length, 0)} {i18n(I18nKey.atlasPosts)}</span>
+						</div>
+						<div class="flex flex-col gap-5">
+							{allSeries.map((series) => (
+								<div class="border border-black/5 dark:border-white/5 rounded-xl p-5">
+									<div class="flex items-center gap-2 mb-3">
+										<span class="text-xl">{series.tag}</span>
+										<span class="text-xs text-black/30 dark:text-white/30 ml-1">
+											({series.posts.length} {i18n(I18nKey.atlasPosts)})
+										</span>
+									</div>
+									<div class="flex flex-col gap-1.5">
+										{series.posts.map((post, idx) => (
+											<a
+												href={post.url}
+												class="flex items-center gap-3 px-3 py-2 rounded-lg transition hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)]"
+											>
+												<span class="w-5 h-5 shrink-0 rounded-md bg-[var(--toc-badge-bg)] text-[var(--btn-content)] text-xs flex items-center justify-center font-bold">
+													{idx + 1}
+												</span>
+												<span class="text-sm text-black/75 dark:text-white/75 truncate">{post.title}</span>
+											</a>
+										))}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</MainGridLayout>

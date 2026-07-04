@@ -221,6 +221,9 @@ export default defineConfig({
 				if (pathname === "/neodb/" && !siteConfig.pages.neodb) {
 					return false;
 				}
+				if (pathname === "/atlas/" && !siteConfig.pages.atlas) {
+					return false;
+				}
 
 				return true;
 			},
