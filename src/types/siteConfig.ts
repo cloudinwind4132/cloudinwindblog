@@ -143,9 +143,9 @@ export type SiteConfig = {
 	// NeoDB 阅览配置
 	neodb?: {
 		accessToken: string; // Bearer Token（也可用环境变量 NEODB_ACCESS_TOKEN，优先级更高）
-		categories?: ("book" | "music" | "game" | "podcast")[]; // 要获取的类别，默认全部
+		categories?: ("book" | "music" | "game" | "podcast" | "movie")[]; // 要获取的类别，默认全部
 		shelves?: ("complete" | "progress" | "wishlist" | "dropped")[]; // 要获取的架位，默认全部
-		categoryOrder?: ("book" | "music" | "game" | "podcast")[]; // Tab 排序顺序
+		categoryOrder?: ("book" | "music" | "game" | "podcast" | "movie")[]; // Tab 排序顺序
 	};
 
 	// 追番配置（Bilibili + TMDB）
