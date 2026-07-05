@@ -27,6 +27,7 @@ const NEODB_CATEGORIES = neodbConfig?.categories ?? [
 	"game",
 	"podcast",
 	"movie",
+	"tv",
 ];
 const NEODB_SHELVES = neodbConfig?.shelves ?? [
 	"complete",
@@ -40,6 +41,7 @@ const CATEGORY_ORDER = neodbConfig?.categoryOrder ?? [
 	"game",
 	"podcast",
 	"movie",
+	"tv",
 ];
 
 // 分类映射
@@ -49,6 +51,7 @@ const categoryMap: Record<string, I18nKey> = {
 	game: I18nKey.neodbCategoryGame,
 	podcast: I18nKey.neodbCategoryPodcast,
 	movie: I18nKey.neodbCategoryMovie,
+	tv: I18nKey.neodbCategoryTv,
 };
 
 // ============ 数据获取 ============

@@ -43,12 +43,18 @@ const STATUS_LABELS: Record<string, Record<string, I18nKey>> = {
 		complete: I18nKey.neodbPodcastDone,
 		dropped: I18nKey.neodbPodcastDropped,
 	},
-		movie: {
-			wishlist: I18nKey.neodbMovieWish,
-			progress: I18nKey.neodbMovieDoing,
-			complete: I18nKey.neodbMovieDone,
-			dropped: I18nKey.neodbMovieDropped,
-		},
+	movie: {
+		wishlist: I18nKey.neodbMovieWish,
+		progress: I18nKey.neodbMovieDoing,
+		complete: I18nKey.neodbMovieDone,
+		dropped: I18nKey.neodbMovieDropped,
+	},
+	tv: {
+		wishlist: I18nKey.neodbTvWish,
+		progress: I18nKey.neodbTvDoing,
+		complete: I18nKey.neodbTvDone,
+		dropped: I18nKey.neodbTvDropped,
+	},
 };
 
 const item = $derived(mark.item);

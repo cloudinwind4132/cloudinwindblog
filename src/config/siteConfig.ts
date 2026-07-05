@@ -186,17 +186,17 @@ export const siteConfig: SiteConfig = {
 		categoryOrder: ["anime", "book", "music", "game"],
 	},
 
-	// NeoDB 阅览配置（书籍/音乐/游戏/播客/电影）
+	// NeoDB 阅览配置（书籍/音乐/游戏/播客/电影/剧集）
 	neodb: {
 		// NeoDB 访问令牌，从 https://neodb.social/developer/ 获取
 		// 也可通过环境变量 NEODB_ACCESS_TOKEN 设置（优先级更高）
 		accessToken: "cCjZyZ5LEeMhzokMbp0aXjhCLvEaa1eGyYhcVmWXBjc15B7dpCqMNN9LJg",
 		// 要获取的条目类别
-		categories: ["book", "music", "game", "podcast", "movie"],
+		categories: ["book", "music", "game", "podcast", "movie", "tv"],
 		// 要获取的架位：complete=看过, progress=在看, wishlist=想看, dropped=抛弃
 		shelves: ["complete", "progress", "wishlist", "dropped"],
 		// Tab 排列顺序
-		categoryOrder: ["book", "music", "game", "podcast", "movie"],
+		categoryOrder: ["book", "music", "game", "podcast", "movie", "tv"],
 	},
 
 	// 追番配置（Bilibili + TMDB）
