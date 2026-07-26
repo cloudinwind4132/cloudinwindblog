@@ -29,7 +29,6 @@ yarn.lock
 # ide
 .idea
 *.iml
-.claude
 
 # docs
 Firefly-docs/
@@ -38,5 +37,12 @@ cache/
 package/
 .obsidian/
 
+<<<<<<< HEAD
 # music player cache (auto-generated per-track hash)
 *.mp3.md5
+=======
+# vibe coding
+.codex*
+.claude
+.mimocode
+>>>>>>> upstream/master
