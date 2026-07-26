@@ -417,7 +417,8 @@ export async function GET({
 		});
 	}
 
-	const svg = await satori(template, {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const svg = await satori(template as any, {
 		width: 1200,
 		height: 630,
 		fonts,
