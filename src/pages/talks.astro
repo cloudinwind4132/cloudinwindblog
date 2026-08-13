@@ -17,14 +17,14 @@ const TOKEN =
 	process.env.MASTODON_ACCESS_TOKEN || mastodonConfig?.accessToken || "";
 const INSTANCE = mastodonConfig?.instance || "scg.owu.one";
 const USER_ID = mastodonConfig?.userId || "";
-const MAX_TALKS = 80;
+const MAX_TALKS = 500;
 
 async function fetchStatuses(pinned = false): Promise<MastodonStatus[]> {
 	if (!TOKEN || !USER_ID) return [];
 
 	const allToots: MastodonStatus[] = [];
 	let lastId: string | null = null;
-	const maxPages = import.meta.env.DEV ? 1 : 5;
+	const maxPages = 20; // 安全上限，正常会在 API 无数据时提前结束
 	const limit = 40;
 
 	for (let i = 0; i < maxPages; i++) {
@@ -55,7 +55,7 @@ async function fetchStatuses(pinned = false): Promise<MastodonStatus[]> {
 			allToots.push(...filtered);
 			lastId = data[data.length - 1].id;
 
-			if (pinned || allToots.length >= MAX_TALKS) break;
+			if (pinned) break;
 		} catch {
 			break;
 		}

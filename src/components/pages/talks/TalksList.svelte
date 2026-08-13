@@ -33,7 +33,7 @@
 		try {
 			const all: MastodonStatus[] = [];
 			let lastId: string | null = null;
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 20; i++) {
 				let url = `https://${instance}/api/v1/accounts/${userId}/statuses?limit=40`;
 				if (lastId) url += `&max_id=${lastId}`;
 				const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
@@ -43,15 +43,15 @@
 				const filtered = data.filter(
 					(t: MastodonStatus) =>
 						!t.reblog &&
-						(!t.in_reply_to_account_id || t.in_reply_to_account_id === userId),
+						(!t.in_reply_to_account_id ||
+							t.in_reply_to_account_id === userId),
 				);
 				all.push(...filtered);
 				lastId = data[data.length - 1].id;
-				if (all.length >= 80) break;
 			}
 			if (all.length > 0) {
 				all.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
-				localTalks = all.slice(0, 80);
+				localTalks = all.slice(0, 500);
 				localAccount = {
 					username: all[0].account.username,
 					display_name: all[0].account.display_name,
