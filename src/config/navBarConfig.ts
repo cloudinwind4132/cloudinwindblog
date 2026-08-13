@@ -62,6 +62,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 追番
 			LinkPresets.Anime,
 
+			// VNDB
+			LinkPresets.VNDB,
+
 			// 番组计划
 			LinkPresets.Bangumi,
 
@@ -77,8 +80,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 时间线
 			LinkPresets.Timeline,
 
-		// 项目
-		LinkPresets.Projects,
+			// 项目
+			LinkPresets.Projects,
+
+			// 书签导航
+			LinkPresets.Booknav,
 		],
 	});
 
@@ -206,6 +212,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:movie",
 		pageKey: "bangumi",
 	},
+	VNDB: {
+		name: "VNDB",
+		url: "/vndb/",
+		icon: "material-symbols:movie",
+		pageKey: "vndb",
+	},
 	Gallery: {
 		name: "相册",
 		url: "/gallery/",
@@ -247,6 +259,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/projects/",
 		icon: "material-symbols:work",
 		pageKey: "projects",
+	},
+	Booknav: {
+		name: "书签导航",
+		url: "/booknav/",
+		icon: "material-symbols:bookmarks",
+		pageKey: "booknav",
 	},
 };
 

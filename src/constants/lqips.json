@@ -1,5 +1,4 @@
 {
-  "src:assets/images/firefly.png": "72d3af9ee699aced93",
   "src:assets/images/avatar.avif": "dcd8d5d1cecabea9a9",
   "public:gallery/firefly-2026/cover.avif": "7588a28a8f989e8d88",
   "public:gallery/firefly-2026/1.avif": "c8bca9dde6d2babfb5",
@@ -32,16 +31,7 @@
   "src:content/posts/images/both-list.avif": "e5e7e4e6e8e7e3e3e5",
   "src:content/posts/images/both-grid.avif": "d5d6d3e6e7e3d8d9e3",
   "src:content/posts/images/1.avif": "b5b0b3bcb6bbe0e0df",
-  "src:assets/images/cloudinwind_firefly1.png": "f1f0ecf2f1eff1ede9",
-  "src:assets/images/cloudinwind_firefly.png": "f2f0edf2f1eff1ede9",
-  "src:assets/images/cloudinwind_avatar1.png": "f2f1e9f5f3ebeee7e0",
-  "src:assets/images/cloudinwind_avatar.png": "f2f1e9f5f3ebeee7e0",
-  "src:content/posts/images/week-note-1.webp": "77627ecaada0c19b8f",
-  "src:content/posts/technical/images/learn_resource_1.jpg": "977168a68277a77669",
-  "src:content/posts/guide/images/cover.avif": "c8bca9dde6d2babfb5",
-  "src:content/posts/guide/images/astro_deploy_5.jpg": "847978797379554e55",
-  "src:content/posts/guide/images/astro_deploy_4.jpg": "786b657c736f887875",
-  "src:content/posts/guide/images/astro_deploy_3.jpg": "978095796970696b8a",
-  "src:content/posts/guide/images/astro_deploy_2.jpg": "67647c505b6e7d94a8",
-  "src:content/posts/guide/images/astro_deploy_1.jpg": "c6d0dec8d1e4a5a8be"
+  "src:content/posts/guide/cover.avif": "c8bca9dde6d2babfb5",
+  "src:assets/images/logo/firefly-light.png": "000000000000000000",
+  "src:assets/images/logo/firefly-dark.png": "ffffffffffffffffff"
 }

@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# generated vndb covers
+public/vndb-covers/
+
 # generated types
 .astro/
 
@@ -33,16 +36,16 @@ yarn.lock
 # docs
 Firefly-docs/
 
+# lite 版本
+Firefly-Lite/
+
 cache/
 package/
 .obsidian/
 
-<<<<<<< HEAD
 # music player cache (auto-generated per-track hash)
 *.mp3.md5
-=======
 # vibe coding
 .codex*
 .claude
 .mimocode
->>>>>>> upstream/master
