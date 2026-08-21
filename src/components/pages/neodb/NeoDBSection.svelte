@@ -3,7 +3,7 @@ import ClientPagination from "@/components/common/ClientPagination.svelte";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import type { NeoDBMark } from "@/types/neodb";
-import FilterControls from "../bangumi/FilterControls.svelte";
+import FilterControls from "../../common/FilterControls.svelte";
 import Card from "./Card.svelte";
 
 interface Props {

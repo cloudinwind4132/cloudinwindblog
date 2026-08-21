@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import type { NeoDBMark } from "@/types/neodb";
-import TabNav from "../bangumi/TabNav.svelte";
+import TabNav from "../../common/TabNav.svelte";
 import NeoDBSection from "./NeoDBSection.svelte";
 
 interface Props {
