@@ -3,7 +3,7 @@ title: 河南在中国处于一种什么样的地位？
 published: 2026-08-30
 pinned: false
 description: 河南在中国处于一种什么样的地位？
-tags: [感触, 微信]
+tags: [感触, 知乎]
 category: Reading
 draft: false
 password: "zhihu"
