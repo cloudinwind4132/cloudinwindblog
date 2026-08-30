@@ -6,20 +6,18 @@ description: 如何了解这个世界(社会)运行的本质？
 tags: [感想, 知乎]
 category: Reading
 draft: false
-image: ../images/firefly2.avif
+image: ../"images/firefly2.avif
+password: "zhihu"
 ---
 
 
-:::note
+> [!NOTE] 提示
+> id: "2353476333"
+> title: "如何了解这个世界(社会)运行的本质？"
+> author: "铃音Suzune"
+> type: zhihu-answer
+> source: [如何了解世界运行的本质](https://www.zhihu.com/question/294801407/answer/2353476333?utm_campaign=&utm_medium=social&utm_oi=1027656689398530048&utm_psn=1642940012022026240&utm_source=com.ideashower.readitlater.pro)
 
-id: "2353476333"
-title: "如何了解这个世界(社会)运行的本质？"
-author: "铃音Suzune"
-type: zhihu-answer
-source: "https://www.zhihu.com/question/294801407/answer/2353476333?utm_campaign=&utm_medium=social&utm_oi=1027656689398530048&utm_psn=1642940012022026240&utm_source=com.ideashower.readitlater.pro"
-downloaded: "2026-08-23"
-
-:::
 
 1
 
