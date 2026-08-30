@@ -3,11 +3,11 @@ title: 如何了解这个世界(社会)运行的本质？
 published: 2026-08-30
 pinned: false
 description: 如何了解这个世界(社会)运行的本质？
-tags: [感想, 知乎]
+tags: [感触, 知乎]
 category: Reading
 draft: false
-image: ../"images/firefly2.avif
 password: "zhihu"
+image: ../images/firefly2.avif
 ---
 
 
