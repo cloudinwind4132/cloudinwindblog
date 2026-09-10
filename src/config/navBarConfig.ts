@@ -86,9 +86,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 时间线
 			LinkPresets.Timeline,
 
-			// 项目
-			LinkPresets.Projects,
-
 			// VNDB
 			LinkPresets.VNDB,
 

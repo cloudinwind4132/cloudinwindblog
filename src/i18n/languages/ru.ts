@@ -276,18 +276,6 @@ export const ru: Translation = {
 	[Key.atlasNoSeries]: "Нет серий",
 	[Key.atlasNoSeriesDesc]: "Добавьте теги с эмодзи (например, 🗺Путешествия) к статьям, чтобы они автоматически группировались в серии.",
 
-	[Key.projectsSubtitle]: "Портфолио моих проектов",
-	[Key.projectsAll]: "Все",
-	[Key.projectsWeb]: "Веб",
-	[Key.projectsMobile]: "Мобильные",
-	[Key.projectsDesktop]: "Десктоп",
-	[Key.projectsOther]: "Другое",
-	[Key.projectsFeatured]: "Избранное",
-	[Key.projectsVisit]: "Посетить",
-	[Key.projectsSource]: "Код",
-	[Key.projectStatusCompleted]: "Завершён",
-	[Key.projectStatusInProgress]: "В процессе",
-	[Key.projectStatusPlanned]: "Запланирован",
 
 	[Key.timeline]: "Хронология",
 	[Key.timelineSubtitle]: "Мой путь роста и важные вехи",
