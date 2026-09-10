@@ -122,6 +122,18 @@ enum I18nKey {
 	searchBooknav = "searchBooknav",
 	booknavEmpty = "booknavEmpty",
 
+	// 项目展示页
+	projects = "projects",
+	projectsDescription = "projectsDescription",
+	projectDetails = "projectDetails",
+	projectBack = "projectBack",
+	projectEmpty = "projectEmpty",
+	projectSearch = "projectSearch",
+	projectStatusPlanning = "projectStatusPlanning",
+	projectStatusDeveloping = "projectStatusDeveloping",
+	projectStatusPublished = "projectStatusPublished",
+	projectStatusArchived = "projectStatusArchived",
+
 	// 番组计划筛选和状态文本
 	bangumiTitle = "bangumiTitle",
 	bangumiSubtitle = "bangumiSubtitle",
@@ -259,8 +271,7 @@ enum I18nKey {
 	atlasNoSeries = "atlasNoSeries",
 	atlasNoSeriesDesc = "atlasNoSeriesDesc",
 
-	// 项目展示
-	projects = "projects",
+	// 项目展示（旧自定义页遗留键，上游枚举中已有 projects）
 	projectsSubtitle = "projectsSubtitle",
 	projectsAll = "projectsAll",
 	projectsWeb = "projectsWeb",
@@ -391,6 +402,14 @@ enum I18nKey {
 	rssHowToUse = "rssHowToUse",
 	rssCopied = "rssCopied",
 	rssCopyFailed = "rssCopyFailed",
+
+	// Atom页面
+	atom = "atom",
+	atomDescription = "atomDescription",
+	atomSubtitle = "atomSubtitle",
+	atomLink = "atomLink",
+	atomCopyToReader = "atomCopyToReader",
+	atomCopied = "atomCopied",
 
 	//最后编辑时间卡片
 	lastModifiedPrefix = "lastModifiedPrefix",
