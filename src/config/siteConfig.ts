@@ -18,7 +18,7 @@ const pages = resolvePageToggles({
 	// ── 我的 (My) ──────────────────────────────────
 
 	// 动态页面开关
-	dynamic: true,
+	dynamic: false,
 	// 项目展示页开关
 	projects: true,
 	// 相册页面开关
@@ -56,7 +56,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "世间的一个默默争渡者",
 
 	// 站点 URL
-	site_url: "https://cloudinwind111.top",
+	site_url: "https://vercel.cloudinwind111.top",
 
 	// 站点描述
 	description: "日月交替, 照耀古今, 以日月为名, 在世间争渡",
