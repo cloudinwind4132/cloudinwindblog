@@ -46,6 +46,15 @@ export const fontsList: FontDefinition[] = [
 		fallbacks: ["sans-serif"],
 	},
 	{
+		name: "EB Garamond",
+		cssVariable: "--font-eb-garamond",
+		provider: "fontsource",
+		weights: ["400", "500", "700"],
+		styles: ["normal"],
+		subsets: ["latin"],
+		fallbacks: ["serif"],
+	},
+	{
 		name: "JetBrains Mono",
 		cssVariable: "--font-jetbrains-mono",
 		provider: "fontsource",
@@ -63,7 +72,7 @@ export const fontsList: FontDefinition[] = [
 			"monospace",
 		],
 	},
-	// ─── 本地字体示例 ───
+	// ─── 本地字体 ───
 	// 使用步骤：
 	// 1. 将 TTF/OTF/WOFF2 字体文件放在 public/assets/fonts/ 目录下
 	// 2. 参考下方配置填写正确的字体信息
@@ -81,6 +90,20 @@ export const fontsList: FontDefinition[] = [
 		},
 		fallbacks: ["sans-serif"],
 	},
+	{
+		name: "TsangerJinKai04",
+		cssVariable: "--font-canger-jinkai04",
+		provider: "local",
+		options: {
+			variants: [
+				{
+					src: ["./public/assets/fonts/TsangerJinKai04-W04.ttf"],
+					weight: "400",
+				},
+			],
+		},
+		fallbacks: ["serif"],
+	},
 ];
 
 // ─── 字体选择与区域覆盖 ─────────────────────────────────────
@@ -89,7 +112,7 @@ export const fontConfig: FontSelectionConfig = {
 	enable: true,
 	// 当前选择的字体 CSS 变量名（对应上方 fonts 中的 cssVariable）
 	// 使用 "system" 表示系统字体（不加载任何自定义字体）
-	selected: ["system"],
+	selected: ["--font-eb-garamond", "--font-canger-jinkai04"],
 
 	// 各区域独立字体设置（填写上方 fonts 中的 cssVariable，留空则使用全局 selected 字体）
 	// 例如：bannerTitleFont: "--font-inter", 表示主页横幅主标题使用 Inter 字体
@@ -106,6 +129,10 @@ export const fontConfig: FontSelectionConfig = {
 	// key 为 fonts 数组中对应的 cssVariable，value 为子集化选项
 	subsetFonts: {
 		"--font-greatvibes": {
+			// 额外包含的字符
+			extraChars: "",
+		},
+		"--font-canger-jinkai04": {
 			// 额外包含的字符
 			extraChars: "",
 		},
