@@ -2,7 +2,8 @@
 title: 环境配置全过程
 category: Technical
 tags: [AI]
-published: 2025-02-27
+image: "api"
+published: 2026-11-26
 ---
 
 本文记录选择中转站、MAC 安装 claude code、设置的过程
@@ -117,11 +118,6 @@ npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.c
 ### 离线安装
 
 参考：https://github.com/DeepTrial/claude-code-offline
-
-
-
-```
-```
 
 
 
